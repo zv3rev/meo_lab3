@@ -38,11 +38,18 @@ public class Main {
     public static void main(String[] args) {
         getDataFromFile();
 
-        calculateWeights(new Quantifiable.Power(2));
+        Quantifiable.Power quantification = new Quantifiable.Power(2);
+        calculateWeights(quantification);
+        System.out.println();
+        System.out.printf("Quantification type: %s\r\n\r\n\r\n", quantification.getClass().getName());
 
         aggregateRates = new LinguisticRate[shops.size()];
         for (int i = 0; i < shops.size(); i++) {
+            System.out.println("======================");
+            System.out.printf("Calculating aggregate rate for %d shop\r\n", i+1);
+            System.out.println("======================");
             List<LinguisticRate> shopRates = Arrays.stream(matrix[i]).sorted(new LinguisticRateComparator()).toList();
+            System.out.print("Sorted ratings: ");
             System.out.println(shopRates);
 
             List<WeightRatePair> lowa = new ArrayList<>();
@@ -52,7 +59,8 @@ public class Main {
 
             LinguisticRate rate = lowaOperator(lowa);
             aggregateRates[i] = rate;
-            System.out.println(rate);
+            System.out.printf("Aggregate rate: %s\r\n", rate);
+            System.out.println("======================\r\n\r\n");
         }
     }
 
@@ -97,18 +105,22 @@ public class Main {
     private static void calculateWeightForCriteria(Quantifiable quantification, int i) {
         if (i == 1) {
             weights[i - 1] = quantification.calculate((float) 1 / criteria.size());
+            System.out.printf("%d criteria weight: %f\r\n", i, weights[i-1]);
         } else {
             weights[i - 1] = quantification.calculate((float) i / criteria.size()) -
                     quantification.calculate((float) (i - 1) / criteria.size());
+            System.out.printf("%d criteria weight: %f\r\n", i, weights[i-1]);
         }
     }
 
     private static void getDataFromFile() {
         String shopString = scanner.nextLine();
         shops = splitAndTrimString(shopString);
+        System.out.printf("Shops list: %s\r\n\r\n", shops);
 
         String criteriaString = scanner.nextLine();
         criteria = splitAndTrimString(criteriaString);
+        System.out.printf("Criteria list: %s\r\n\r\n", criteria);
 
         int shopsAmount = shops.size();
         int criteriaAmount = criteria.size();
@@ -128,6 +140,11 @@ public class Main {
                         j[0]++;
                     });
         }
+        System.out.println("Rating matrix:");
+        for (int i = 0; i < shopsAmount; i++) {
+            System.out.println(Arrays.deepToString(matrix[i]));
+        }
+        System.out.println();
     }
 
     private static List<String> splitAndTrimString(String s) {
