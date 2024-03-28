@@ -1,0 +1,8 @@
+Classic, Truvor, Gentlemen, Caesar, Michelin, Maestro
+Comfort, Sellers help, Advice accessibility, Cost
+H,  VH,  H,  VH
+L,  M,   L,  H
+L,  VL,  VL, M
+M,  VL,  M,  VH
+L,  H,   M,  M
+H,  VH,  H,  VH
