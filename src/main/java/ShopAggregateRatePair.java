@@ -4,7 +4,7 @@ public record ShopAggregateRatePair(int shopNumber, String shopName, Main.Lingui
     public static class SARComparator implements Comparator<ShopAggregateRatePair>{
         @Override
         public int compare(ShopAggregateRatePair o1, ShopAggregateRatePair o2) {
-            return o1.aggregateRate.order - o2.aggregateRate.order;
+            return o2.aggregateRate.order - o1.aggregateRate.order;
         }
     }
 }

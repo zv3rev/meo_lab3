@@ -139,10 +139,10 @@ Aggregate rate: H
 
 
 ======================
-#1: Gentlemen (VL)
-#2: Truvor (L)
-#3: Caesar (L)
-#4: Michelin (L)
-#5: Classic (H)
-#6: Maestro (H)
+#1: Classic (H)
+#2: Maestro (H)
+#3: Truvor (L)
+#4: Caesar (L)
+#5: Michelin (L)
+#6: Gentlemen (VL)
 ======================
